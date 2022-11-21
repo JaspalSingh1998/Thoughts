@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     android:orientation="vertical"
-    android:background="#C9C6C6"
     tools:context=".AddScreen">
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -20,6 +19,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/thoughtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter Your Thought Title"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleLayout"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/thoughtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:lines="15"
+            android:gravity="top"
+            android:overScrollMode="always"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="insideInset"
+            android:scrollHorizontally="false"
+            android:hint="Type your thoughts here"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="46dp"
@@ -30,22 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="347dp"
-        android:layout_height="345dp"
-        android:layout_marginTop="16dp"
-        android:background="#E1F5FE"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/app_name"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
 
     <Button
         android:id="@+id/button2"
@@ -70,101 +97,76 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/redBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_2" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/yelloBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/redBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_3" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/browBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/yelloBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_4" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/tealBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/browBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_5" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/blueBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/tealBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_6" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/purpleBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/blueBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_7" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/pinkBg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintStart_toEndOf="@+id/purpleBg"
+        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
         app:srcCompat="@drawable/ellipse_8" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
-        app:srcCompat="@drawable/ellipse_9" />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="340dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:background="#E1F5FE"
-        android:text="Thought Title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

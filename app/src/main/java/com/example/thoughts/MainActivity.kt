@@ -31,11 +31,5 @@ class MainActivity : AppCompatActivity() {
              val intent1 = Intent(this, AddScreen::class.java)
              startActivity(intent1)
         }
-       // val buttonClick = findViewById<Button>(R.id.plus)
-        ///binding.plus.setOnClickListener{
-           // val intent1 = Intent(this, AddScreen::class.java)
-           // startActivity(intent1)
-          //  Log.d("Add", "hello")
-
     }
 }
