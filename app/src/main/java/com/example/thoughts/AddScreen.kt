@@ -3,21 +3,26 @@ package com.example.thoughts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.time.LocalDate
+import java.util.*
 
 
 class AddScreen : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_screen)
@@ -42,8 +47,15 @@ class AddScreen : AppCompatActivity() {
         }
 
         saveThoughtButton.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val date = cal.get(Calendar.DATE).toString()
+            val month = cal.get(Calendar.MONTH).toString()
+            val year = cal.get(Calendar.YEAR).toString()
+
+            val createdAt = "$month/$date/$year"
+
             database = Firebase.database.getReference("Thought")
-            val thought = Thought(thoughtTitle.text.toString(), thoughtDescription.text.toString(), selectedColor)
+            val thought = Thought(thoughtTitle.text.toString(), thoughtDescription.text.toString(), selectedColor, createdAt)
             val thoughTitle = thoughtTitle.text.toString()
             database.child(thoughTitle).setValue(thought).addOnSuccessListener {
                 Toast.makeText(this, "Thought secured successfully!", Toast.LENGTH_SHORT).show()
@@ -55,8 +67,31 @@ class AddScreen : AppCompatActivity() {
         }
 
         redBg.setOnClickListener {
-            selectedColor = "#EC3838"
+            selectedColor = "236,56,56"
         }
 
+        blueBg.setOnClickListener {
+            selectedColor = "24,123,196"
+        }
+
+        yellowBg.setOnClickListener {
+            selectedColor = "255,231,16"
+        }
+
+        brownBg.setOnClickListener {
+            selectedColor = "78,10,10"
+        }
+
+        tealBg.setOnClickListener {
+            selectedColor = "43,202,135"
+        }
+
+        purpleBg.setOnClickListener {
+            selectedColor = "115,75,228"
+        }
+
+        pinkBg.setOnClickListener {
+            selectedColor = "192,24,196"
+        }
     }
 }

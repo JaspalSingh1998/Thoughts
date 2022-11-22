@@ -1,13 +1,15 @@
 package com.example.thoughts
 
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Calendar
+
 
 class MyAdapter(private val thoughtList: ArrayList<Thought>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
@@ -30,9 +32,18 @@ class MyAdapter(private val thoughtList: ArrayList<Thought>) : RecyclerView.Adap
         val currentThought = thoughtList[position]
 
         holder.thoughtTitleTV.text = currentThought.title
-        holder.thoughtContentTV.text = currentThought.content!!.substring(0, 45) + "..."
-        holder.thoughtDateTV.text = "Today"
-//        holder.card.setBackgroundColor()
+        if(currentThought.content!!.length > 45) {
+            holder.thoughtContentTV.text = currentThought.content!!.substring(0, 45) + "..."
+        } else {
+            holder.thoughtContentTV.text = currentThought.content!!
+        }
+        holder.thoughtDateTV.text = currentThought.createdAt!!
+        val color = currentThought.color;
+        val redColor = color?.split(",")?.toTypedArray()?.get(0)?.toInt()
+        val greenColor = color?.split(",")?.toTypedArray()?.get(1)?.toInt()
+        val blueColor = color?.split(",")?.toTypedArray()?.get(2)?.toInt()
+        Log.d("Date", Calendar.getInstance().get(Calendar.DATE).toString())
+        holder.card.setBackgroundColor(Color.rgb(redColor!!, greenColor!!, blueColor!!))
 
     }
 
