@@ -4,14 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thoughts.databinding.ActivityMainBinding
 import com.example.thoughts.databinding.ActivitySignInBinding
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,6 +27,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
+    lateinit var toggle :ActionBarDrawerToggle
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -35,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         thoughtRecyclerView = findViewById(R.id.thoughtsRV)
         thoughtRecyclerView.layoutManager = GridLayoutManager(this, 2)
         thoughtRecyclerView.setHasFixedSize(true)
@@ -43,17 +51,43 @@ class MainActivity : AppCompatActivity() {
         getThoughts()
 
 
-//        firebaseAuth = FirebaseAuth.getInstance()
-//        binding.logout.setOnClickListener {
-//            firebaseAuth.signOut()
-//            val intent = Intent(this, SignInActivity::class.java)
-//            startActivity(intent)
-//            Toast.makeText(this, "Successfully Logged out!", Toast.LENGTH_SHORT).show()
-//        }
+        firebaseAuth = FirebaseAuth.getInstance()
+        //binding.logout.setOnClickListener {
+          //  firebaseAuth.signOut()
+            //val intent = Intent(this, SignInActivity::class.java)
+            //startActivity(intent)
+            //Toast.makeText(this, "Successfully Logged out!", Toast.LENGTH_SHORT).show()
+       //}
         binding.plus.setOnClickListener {
              val intent1 = Intent(this, AddScreen::class.java)
              startActivity(intent1)
         }
+
+        val drawerLayout: DrawerLayout = findViewById(R.id.drawerLayout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+
+        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+      firebaseAuth.signOut()
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show()
+           // when(it.itemId){
+
+             //    R.id.logout -> Toast.makeText(applicationContext,"Clicked Logout",Toast.LENGTH_SHORT).show()
+            //}
+            true
+        }
+        //binding.navView.setOnClickListener {
+          //  val intent2 = Intent(this, SignInActivity::class.java)
+           // startActivity(intent2)
+        //}
+
     }
 
     private fun getThoughts() {
@@ -86,5 +120,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)){
+            return true
+        }
+
+
+        return super.onOptionsItemSelected(item)
     }
 }

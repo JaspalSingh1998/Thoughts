@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Thoughts"
         tools:targetApi="31">
         <activity
+            android:name=".DrawerMenu"
+            android:exported="false" />
+        <activity
             android:name=".ThoughtDetail"
             android:exported="false">
             <meta-data
