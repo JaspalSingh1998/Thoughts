@@ -29,7 +29,7 @@ class AddScreen : AppCompatActivity() {
 
 
         val imageView1 = findViewById<ImageView>(R.id.imageView)
-        var selectedColor = ""
+        var selectedColor = "236,56,56"
         val thoughtTitle = findViewById<EditText>(R.id.thoughtTitle)
         val thoughtDescription = findViewById<EditText>(R.id.thoughtContent)
         val saveThoughtButton = findViewById<Button>(R.id.button2)
