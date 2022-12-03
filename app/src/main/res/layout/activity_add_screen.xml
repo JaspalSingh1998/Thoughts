@@ -1,84 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:background="@color/colorPrimaryDark"
+    android:padding="10dp"
     android:orientation="vertical"
     tools:context=".AddScreen">
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="Add New Thoughts "
+        android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/titleLayout"
+    <LinearLayout
+        android:id="@+id/thoughtTitleLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:background="@color/blue"
+            />
+
+        <EditText
             android:id="@+id/thoughtTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10sp"
+            android:textColor="@color/ColorWhite"
+            android:textColorHint="@color/ColorWhite"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:hint="Enter Your Thought Title"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            />
+    </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/contentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/thoughtContent"
+        android:layout_width="367dp"
+        android:layout_height="393dp"
+        android:layout_margin="10dp"
+        android:ellipsize="end"
+        android:gravity="top"
+        android:hint="Type your thoughts here"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:textColor="@color/ColorWhite"
+        android:textColorHint="@color/ColorGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLayout"
-        >
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/thoughtContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:lines="15"
-            android:gravity="top"
-            android:overScrollMode="always"
-            android:scrollbars="vertical"
-            android:scrollbarStyle="insideInset"
-            android:scrollHorizontally="false"
-            android:hint="Type your thoughts here"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/thoughtTitleLayout" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="46dp"
-        android:layout_height="37dp"
+        android:layout_width="31dp"
+        android:layout_height="26dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintHorizontal_bias="0.021"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24"
+        app:tint="@color/white" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="332dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="20dp"
         android:text="Secure My Thought"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,6 +101,7 @@
         android:layout_height="27dp"
         android:layout_marginBottom="4dp"
         android:text="(Color choice of bg)"
+        android:textColor="@color/ColorWhite"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +114,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_2" />
 
     <ImageView
@@ -113,7 +124,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/redBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_3" />
 
     <ImageView
@@ -123,7 +134,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/yelloBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_4" />
 
     <ImageView
@@ -133,7 +144,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/browBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_5" />
 
     <ImageView
@@ -143,7 +154,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/tealBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_6" />
 
     <ImageView
@@ -153,7 +164,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/blueBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_7" />
 
     <ImageView
@@ -163,7 +174,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toEndOf="@+id/purpleBg"
-        app:layout_constraintTop_toBottomOf="@+id/contentLayout"
+        app:layout_constraintTop_toBottomOf="@+id/thoughtContent"
         app:srcCompat="@drawable/ellipse_8" />
 
 

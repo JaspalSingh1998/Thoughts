@@ -12,6 +12,7 @@
         android:layout_width="180dp"
         android:layout_height="200dp"
         android:layout_marginRight="20dp"
+        app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/teal_700"
         >
         <LinearLayout
