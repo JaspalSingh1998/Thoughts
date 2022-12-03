@@ -63,7 +63,6 @@
         android:ellipsize="end"
         android:gravity="top"
         android:hint="Type your thoughts here"
-        android:maxLines="1"
         android:padding="10dp"
         android:textColor="@color/ColorWhite"
         android:textColorHint="@color/ColorGray"

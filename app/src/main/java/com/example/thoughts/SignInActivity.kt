@@ -20,12 +20,12 @@ class SignInActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.textView.setOnClickListener {
+        binding.txtSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
 
-        binding.button.setOnClickListener {
+        binding.btnSignIn.setOnClickListener {
             val email = binding.loginemail.text.toString()
             val pass = binding.loginPassword.text.toString()
 

@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     private lateinit var databse : DatabaseReference
+    private lateinit var databseReference : DatabaseReference
     private lateinit var thoughtRecyclerView: RecyclerView
     private lateinit var thoughtArrayList: ArrayList<Thought>
 
@@ -48,16 +49,24 @@ class MainActivity : AppCompatActivity() {
         thoughtRecyclerView.setHasFixedSize(true)
 
         thoughtArrayList = arrayListOf<Thought>()
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        val uid = firebaseAuth.currentUser?.uid
+
+        if (uid != null) {
+            databseReference = Firebase.database.getReference("User")
+            databseReference.child(uid).get().addOnSuccessListener {
+                if(it.exists()) {
+                    val userNameSp = it.child("name").value
+                    binding.welcomeback.text = "Welcome Back, " + userNameSp.toString()
+                }
+            }
+        }
+
         getThoughts()
 
 
         firebaseAuth = FirebaseAuth.getInstance()
-        //binding.logout.setOnClickListener {
-          //  firebaseAuth.signOut()
-            //val intent = Intent(this, SignInActivity::class.java)
-            //startActivity(intent)
-            //Toast.makeText(this, "Successfully Logged out!", Toast.LENGTH_SHORT).show()
-       //}
         binding.plus.setOnClickListener {
              val intent1 = Intent(this, AddScreen::class.java)
              startActivity(intent1)
@@ -73,20 +82,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         navView.setNavigationItemSelectedListener {
-      firebaseAuth.signOut()
+        firebaseAuth.signOut()
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
             Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show()
-           // when(it.itemId){
-
-             //    R.id.logout -> Toast.makeText(applicationContext,"Clicked Logout",Toast.LENGTH_SHORT).show()
-            //}
             true
         }
-        //binding.navView.setOnClickListener {
-          //  val intent2 = Intent(this, SignInActivity::class.java)
-           // startActivity(intent2)
-        //}
 
     }
 
