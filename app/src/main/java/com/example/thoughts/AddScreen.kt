@@ -47,17 +47,22 @@ class AddScreen : AppCompatActivity() {
         }
 
         saveThoughtButton.setOnClickListener {
+            // Use Kotlin Calendar to get date
             val cal = Calendar.getInstance()
+
+            // Get Date, month, Year from date object.
             val date = cal.get(Calendar.DATE).toString()
             val month = cal.get(Calendar.MONTH).toString()
             val year = cal.get(Calendar.YEAR).toString()
 
             val createdAt = "$month/$date/$year"
 
+            // Get Firebase database collection
             database = Firebase.database.getReference("Thought")
             val thought = Thought(thoughtTitle.text.toString(), thoughtDescription.text.toString(), selectedColor, createdAt)
             val thoughTitle = thoughtTitle.text.toString()
             database.child(thoughTitle).setValue(thought).addOnSuccessListener {
+                // Navigate to Main Activity After successfully Adding new thought
                 Toast.makeText(this, "Thought secured successfully!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -65,6 +70,8 @@ class AddScreen : AppCompatActivity() {
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // Setup click listeners for color images to get color game
 
         redBg.setOnClickListener {
             selectedColor = "236,56,56"

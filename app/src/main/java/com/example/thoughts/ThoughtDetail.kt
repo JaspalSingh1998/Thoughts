@@ -12,8 +12,10 @@ class ThoughtDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_thought_detail)
 
+        // Grab all the data passed from main screen
         val thoughtTitle = intent.getStringExtra("title")
         val thoughtDetail = intent.getStringExtra("content")
+
         val subtitle = findViewById<TextView>(R.id.thoughtTitle)
         val textContent = findViewById<TextView>(R.id.thoughtContent)
         val backBtn = findViewById<ImageView>(R.id.imageView)
